@@ -531,7 +531,7 @@ async function analyzeMessage() {
         console.error(error);
 
         alert(
-            "Cannot connect to ScamDetect AI backend. " +
+            "Cannot connect to Cyber Shield backend. " +
             "Make sure the Flask server is running."
         );
 

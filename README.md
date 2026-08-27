@@ -1,6 +1,6 @@
-# ScamDetect AI
+# Cyber Shield
 
-ScamDetect AI is a full-stack message and URL security analysis platform. The
+Cyber Shield is a full-stack message and URL security analysis platform. The
 existing HTML frontend calls a Flask API that validates input, applies a
 transparent local detector, optionally requests structured analysis from an
 OpenAI-compatible provider, persists user-owned analyses in MongoDB, and can

@@ -108,7 +108,7 @@ async function sendPhoneOTP() {
         document.getElementById(
             "phoneError"
         ).textContent =
-            "Cannot connect to ScamDetect backend.";
+            "Cannot connect to Cyber Shield backend.";
 
     }
 

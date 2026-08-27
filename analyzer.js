@@ -567,7 +567,7 @@ function generateSecurityReport() {
         <head>
 
             <title>
-                ScamDetect AI - Security Report
+                Cyber Shield - Security Report
             </title>
 
             <style>
@@ -696,7 +696,7 @@ function generateSecurityReport() {
 
                     <div class="logo">
 
-                        🛡️ ScamDetect
+                        🛡️ Cyber Shield
                         <span>AI</span>
 
                     </div>
@@ -816,7 +816,7 @@ function generateSecurityReport() {
                 <div class="footer">
 
                     <strong>
-                        ScamDetect AI
+                        Cyber Shield
                     </strong>
 
                     <br>

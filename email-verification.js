@@ -116,7 +116,7 @@ async function sendEmailOTP() {
         document.getElementById(
             "emailError"
         ).textContent =
-            "Cannot connect to ScamDetect backend.";
+            "Cannot connect to Cyber Shield backend.";
 
     }
 

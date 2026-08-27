@@ -1,4 +1,4 @@
-"""ScamDetect AI API with safe local fallback and MongoDB-ready persistence."""
+"""Cyber Shield API with safe local fallback and MongoDB-ready persistence."""
 import hashlib
 import json
 import os
@@ -58,7 +58,7 @@ def collection(name):
     if MongoClient and os.getenv("MONGODB_URI"):
         if not hasattr(app, "mongo_db"):
             client = MongoClient(os.environ["MONGODB_URI"], serverSelectionTimeoutMS=2500)
-            app.mongo_db = client[os.getenv("MONGODB_DB", "scamdetect")]
+            app.mongo_db = client[os.getenv("MONGODB_DB", "cybershield")]
         return app.mongo_db[name]
     return memory[name]
 
@@ -143,7 +143,7 @@ def deliver_phone_otp(phone, code):
     payload = urllib.parse.urlencode({
         "To": phone,
         "From": sender,
-        "Body": "Your ScamDetect AI verification code is " + code + ". It expires in 5 minutes.",
+        "Body": "Your Cyber Shield verification code is " + code + ". It expires in 5 minutes.",
     }).encode()
     credentials = base64.b64encode(f"{sid}:{token}".encode()).decode()
     request = urllib.request.Request(endpoint, payload, {
@@ -166,10 +166,10 @@ def deliver_email_otp(email, code):
     import smtplib
     from email.message import EmailMessage
     message = EmailMessage()
-    message["Subject"] = "ScamDetect AI verification code"
+    message["Subject"] = "Cyber Shield verification code"
     message["From"] = sender
     message["To"] = email
-    message.set_content("Your ScamDetect AI verification code is " + code + ". It expires in 5 minutes.")
+    message.set_content("Your Cyber Shield verification code is " + code + ". It expires in 5 minutes.")
     with smtplib.SMTP_SSL(os.getenv("SMTP_PORT", "465"), timeout=10) as server:
         server.login(username, password)
         server.send_message(message)
@@ -227,7 +227,7 @@ def security_headers(response):
 
 @app.get("/")
 def home():
-    return jsonify(success=True, service="ScamDetect AI", version="2.0")
+    return jsonify(success=True, service="Cyber Shield", version="2.0")
 
 
 @app.get("/api/health")
@@ -405,7 +405,7 @@ def report_pdf(report_id):
     if not report: return jsonify(success=False, error="Report not found."), 404
     if not SimpleDocTemplate: return jsonify(success=False, error="PDF support requires reportlab."), 503
     stream = BytesIO(); doc = SimpleDocTemplate(stream, pagesize=A4); styles = getSampleStyleSheet(); content = report["content"]
-    story = [Paragraph("SCAMDETECT AI", styles["Title"]), Paragraph("THREAT INTELLIGENCE REPORT", styles["Heading2"]), Spacer(1, 18)]
+    story = [Paragraph("CYBER SHIELD", styles["Title"]), Paragraph("THREAT INTELLIGENCE REPORT", styles["Heading2"]), Spacer(1, 18)]
     for label, value in (("Report ID", report["report_id"]), ("Risk", f"{content['risk_score']}/100 - {content['classification']}"), ("Generated", report["created_at"].isoformat()), ("Message snapshot", content["preview"]), ("Threat summary", content["summary"]), ("Recommendation", content["recommendation"]), ("Integrity hash", report["report_hash"])):
         story.extend([Paragraph(f"<b>{label}</b>", styles["Heading3"]), Paragraph(str(value), styles["BodyText"]), Spacer(1, 8)])
     doc.build(story); stream.seek(0); return send_file(stream, as_attachment=True, download_name=f"{report_id}.pdf", mimetype="application/pdf")
