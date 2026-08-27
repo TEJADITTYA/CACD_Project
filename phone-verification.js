@@ -83,6 +83,11 @@ async function sendPhoneOTP() {
             "Enter the OTP sent to " +
             maskPhone(phoneValue);
 
+        if (data.development_otp) {
+            document.getElementById("demoOtp").textContent =
+                "LOCAL DEVELOPMENT OTP: " + data.development_otp;
+        }
+
 
         document.getElementById(
             "otp1"
@@ -137,10 +142,10 @@ async function verifyContactOTP() {
     error.textContent = "";
 
 
-    if (!/^[0-9]{6}$/.test(otp)) {
+    if (!/^[0-9]{4}$/.test(otp)) {
 
         error.textContent =
-            "Enter the complete 6-digit OTP.";
+            "Enter the complete 4-digit OTP.";
 
         return;
     }

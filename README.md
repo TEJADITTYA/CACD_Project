@@ -34,7 +34,12 @@ uses Twilio's HTTPS API from the backend. Create a Twilio account, obtain the
 Account SID and Auth Token, verify a sender number, then set
 `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, and `TWILIO_FROM_NUMBER` in
 `backend/.env`. Email delivery uses the SMTP settings in the same file. The
-API returns `503` when delivery is not configured and never returns the OTP.
+The OTP is a random four-digit code. In development, when no provider is
+configured, the API returns a clearly labeled `development_otp` so the local
+workflow can be tested. In production, provider delivery is mandatory, the API
+returns `503` when it is unavailable, and it never returns the OTP. No local
+algorithm can deliver a message to a real phone or mailbox without a carrier
+or email provider.
 
 ## API surface
 

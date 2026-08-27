@@ -113,6 +113,11 @@ async function sendOTP() {
         ).textContent =
             `Enter the verification code for ${maskPhone(fullPhoneNumber)}`;
 
+        if (data.development_otp) {
+            document.getElementById("demoOtp").textContent =
+                `LOCAL DEVELOPMENT OTP: ${data.development_otp}`;
+        }
+
 
         document.getElementById(
             "otp1"
@@ -163,10 +168,10 @@ async function verifyOTP() {
     error.textContent = "";
 
 
-    if (!/^[0-9]{6}$/.test(otp)) {
+    if (!/^[0-9]{4}$/.test(otp)) {
 
         error.textContent =
-            "Please enter the 6-digit OTP.";
+            "Please enter the 4-digit OTP.";
 
         return;
     }

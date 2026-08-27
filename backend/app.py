@@ -124,7 +124,7 @@ def otp_key(kind, value):
 
 
 def issue_otp(kind, value):
-    code = f"{secrets.randbelow(1000000):06d}"
+    code = f"{secrets.randbelow(10000):04d}"
     otp_store[otp_key(kind, value)] = {"hash": hashlib.sha256(code.encode()).hexdigest(), "expires": time.time() + OTP_TTL, "attempts": 0}
     app.logger.info("OTP requested for %s; delivery requires a configured provider", value)
     return code
@@ -267,19 +267,27 @@ def otp_endpoint(kind, verify=False):
         return jsonify(success=False, error=f"Valid {kind} is required."), 400
     if verify:
         code = str(data.get("otp", "")).strip()
-        if not re.fullmatch(r"\d{6}", code): return jsonify(success=False, error="A six-digit OTP is required."), 400
+        if not re.fullmatch(r"\d{4}", code): return jsonify(success=False, error="A four-digit OTP is required."), 400
         valid, message = verify_otp(kind, value, code); return jsonify(success=valid, message=message), 200 if valid else 400
     code = issue_otp(kind, value)
     try:
-        if kind == "phone":
+        has_phone_provider = all(os.getenv(name) for name in ("TWILIO_ACCOUNT_SID", "TWILIO_AUTH_TOKEN", "TWILIO_FROM_NUMBER"))
+        has_email_provider = all(os.getenv(name) for name in ("SMTP_HOST", "SMTP_USERNAME", "SMTP_PASSWORD", "SMTP_FROM"))
+        if kind == "phone" and has_phone_provider:
             deliver_phone_otp(value, code)
-        else:
+        elif kind == "email" and has_email_provider:
             deliver_email_otp(value, code)
+        elif os.getenv("APP_ENV", "development") == "production":
+            raise RuntimeError("OTP provider is not configured.")
     except Exception:
         otp_store.pop(otp_key(kind, value), None)
         app.logger.exception("OTP delivery failed")
         return jsonify(success=False, error=f"{kind.title()} delivery is not configured or unavailable."), 503
-    return jsonify(success=True, message=f"{kind.title()} OTP sent successfully.")
+    response = {"success": True, "message": f"{kind.title()} OTP sent successfully."}
+    if os.getenv("APP_ENV", "development") != "production":
+        response["development_otp"] = code
+        response["message"] = f"{kind.title()} OTP generated for local development."
+    return jsonify(response)
 
 
 @app.post("/api/auth/send-phone-otp")

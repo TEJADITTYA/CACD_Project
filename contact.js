@@ -184,6 +184,11 @@ async function requestOTP(type, value) {
                 type
             )}`;
 
+        if (data.development_otp) {
+            document.getElementById("demoOtp").textContent =
+                "LOCAL DEVELOPMENT OTP: " + data.development_otp;
+        }
+
 
         document.querySelector(
             ".contact-otp"
@@ -242,10 +247,10 @@ async function verifyContactOTP() {
     error.textContent = "";
 
 
-    if (!/^[0-9]{6}$/.test(otp)) {
+    if (!/^[0-9]{4}$/.test(otp)) {
 
         error.textContent =
-            "Please enter the complete 6-digit OTP.";
+            "Please enter the complete 4-digit OTP.";
 
         return;
     }
