@@ -209,30 +209,6 @@ async function requestOTP(type, value) {
         }
 
 
-        /* Scroll to OTP */
-
-        otpSection.scrollIntoView({
-
-            behavior: "smooth",
-
-            block: "center"
-
-        });
-
-
-        /* Focus first box */
-
-        setTimeout(() => {
-
-            document.getElementById(
-                "otp1"
-            ).focus();
-
-        }, 500);
-
-
-    } catch (error) {
-
         console.error(
             "Backend connection error:",
             error

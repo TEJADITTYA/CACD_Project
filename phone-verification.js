@@ -72,8 +72,6 @@ async function sendPhoneOTP() {
         }
 
 
-        /* Show OTP */
-
         document.getElementById(
             "otpSection"
         ).style.display = "block";
@@ -84,19 +82,6 @@ async function sendPhoneOTP() {
         ).textContent =
             "Enter the OTP sent to " +
             maskPhone(phoneValue);
-
-
-        /* Demo OTP */
-
-        if (data.demo_otp) {
-
-            document.getElementById(
-                "demoOtp"
-            ).textContent =
-                "DEMO OTP: " +
-                data.demo_otp;
-
-        }
 
 
         document.getElementById(

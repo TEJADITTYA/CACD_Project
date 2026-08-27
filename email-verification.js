@@ -79,8 +79,6 @@ async function sendEmailOTP() {
         }
 
 
-        /* Show OTP */
-
         document.getElementById(
             "otpSection"
         ).style.display =
@@ -92,19 +90,6 @@ async function sendEmailOTP() {
         ).textContent =
             "Enter the OTP sent to " +
             maskEmail(emailValue);
-
-
-        /* Demo OTP */
-
-        if (data.demo_otp) {
-
-            document.getElementById(
-                "demoOtp"
-            ).textContent =
-                "DEMO OTP: " +
-                data.demo_otp;
-
-        }
 
 
         document.getElementById(

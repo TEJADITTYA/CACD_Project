@@ -62,7 +62,7 @@ async function sendOTP() {
 
         const response =
             await fetch(
-                `${API_URL}/api/send-otp`,
+                `${API_URL}/api/send-phone-otp`,
                 {
                     method: "POST",
 
@@ -112,24 +112,6 @@ async function sendOTP() {
             "otpMessage"
         ).textContent =
             `Enter the verification code for ${maskPhone(fullPhoneNumber)}`;
-
-
-        /*
-         DEMO MODE
-
-         The backend returns the OTP
-         so you can test without an
-         SMS provider.
-        */
-
-        if (data.demo_otp) {
-
-            document.getElementById(
-                "demoOtp"
-            ).textContent =
-                `DEMO OTP: ${data.demo_otp}`;
-
-        }
 
 
         document.getElementById(
