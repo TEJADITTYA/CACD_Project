@@ -185,29 +185,11 @@ async function requestOTP(type, value) {
             )}`;
 
 
-        /* Demo OTP */
+        document.querySelector(
+            ".contact-otp"
+        )?.focus();
 
-        const demoOtp =
-            document.getElementById(
-                "demoOtp"
-            );
-
-
-        if (data.demo_otp) {
-
-            demoOtp.textContent =
-                "DEMO OTP: " +
-                data.demo_otp;
-
-            demoOtp.style.display =
-                "inline-block";
-
-        } else {
-
-            demoOtp.style.display =
-                "none";
-        }
-
+    } catch (error) {
 
         console.error(
             "Backend connection error:",
