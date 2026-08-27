@@ -29,9 +29,12 @@ or unavailable, the response explicitly says `Fallback heuristic analysis`.
 No URL is fetched automatically; URL checks are structural unless a reputation
 provider is configured.
 
-OTP routes store only a hash for five minutes and cap attempts. A real SMS or
-email provider must be connected before production delivery; the API never
-returns the OTP.
+OTP routes store only a hash for five minutes and cap attempts. Phone delivery
+uses Twilio's HTTPS API from the backend. Create a Twilio account, obtain the
+Account SID and Auth Token, verify a sender number, then set
+`TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, and `TWILIO_FROM_NUMBER` in
+`backend/.env`. Email delivery uses the SMTP settings in the same file. The
+API returns `503` when delivery is not configured and never returns the OTP.
 
 ## API surface
 

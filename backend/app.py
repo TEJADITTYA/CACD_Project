@@ -6,6 +6,7 @@ import re
 import secrets
 import time
 import uuid
+import base64
 from datetime import datetime, timezone
 from functools import wraps
 from io import BytesIO
@@ -126,6 +127,52 @@ def issue_otp(kind, value):
     code = f"{secrets.randbelow(1000000):06d}"
     otp_store[otp_key(kind, value)] = {"hash": hashlib.sha256(code.encode()).hexdigest(), "expires": time.time() + OTP_TTL, "attempts": 0}
     app.logger.info("OTP requested for %s; delivery requires a configured provider", value)
+    return code
+
+
+def deliver_phone_otp(phone, code):
+    """Deliver an OTP through Twilio without exposing provider credentials."""
+    sid = os.getenv("TWILIO_ACCOUNT_SID")
+    token = os.getenv("TWILIO_AUTH_TOKEN")
+    sender = os.getenv("TWILIO_FROM_NUMBER")
+    if not sid or not token or not sender:
+        raise RuntimeError("SMS provider is not configured.")
+    import urllib.parse
+    import urllib.request
+    endpoint = f"https://api.twilio.com/2010-04-01/Accounts/{sid}/Messages.json"
+    payload = urllib.parse.urlencode({
+        "To": phone,
+        "From": sender,
+        "Body": "Your ScamDetect AI verification code is " + code + ". It expires in 5 minutes.",
+    }).encode()
+    credentials = base64.b64encode(f"{sid}:{token}".encode()).decode()
+    request = urllib.request.Request(endpoint, payload, {
+        "Authorization": "Basic " + credentials,
+        "Content-Type": "application/x-www-form-urlencoded",
+    })
+    with urllib.request.urlopen(request, timeout=10) as response:
+        if response.status >= 300:
+            raise RuntimeError("SMS provider rejected the request.")
+
+
+def deliver_email_otp(email, code):
+    """Deliver email OTP via SMTP when explicitly configured."""
+    host = os.getenv("SMTP_HOST")
+    username = os.getenv("SMTP_USERNAME")
+    password = os.getenv("SMTP_PASSWORD")
+    sender = os.getenv("SMTP_FROM", username or "")
+    if not all((host, username, password, sender)):
+        raise RuntimeError("Email provider is not configured.")
+    import smtplib
+    from email.message import EmailMessage
+    message = EmailMessage()
+    message["Subject"] = "ScamDetect AI verification code"
+    message["From"] = sender
+    message["To"] = email
+    message.set_content("Your ScamDetect AI verification code is " + code + ". It expires in 5 minutes.")
+    with smtplib.SMTP_SSL(os.getenv("SMTP_PORT", "465"), timeout=10) as server:
+        server.login(username, password)
+        server.send_message(message)
 
 
 def verify_otp(kind, value, code):
@@ -221,7 +268,17 @@ def otp_endpoint(kind, verify=False):
         code = str(data.get("otp", "")).strip()
         if not re.fullmatch(r"\d{6}", code): return jsonify(success=False, error="A six-digit OTP is required."), 400
         valid, message = verify_otp(kind, value, code); return jsonify(success=valid, message=message), 200 if valid else 400
-    issue_otp(kind, value); return jsonify(success=True, message=f"{kind.title()} OTP requested. Check the configured delivery provider.")
+    code = issue_otp(kind, value)
+    try:
+        if kind == "phone":
+            deliver_phone_otp(value, code)
+        else:
+            deliver_email_otp(value, code)
+    except Exception:
+        otp_store.pop(otp_key(kind, value), None)
+        app.logger.exception("OTP delivery failed")
+        return jsonify(success=False, error=f"{kind.title()} delivery is not configured or unavailable."), 503
+    return jsonify(success=True, message=f"{kind.title()} OTP sent successfully.")
 
 
 @app.post("/api/auth/send-phone-otp")
