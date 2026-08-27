@@ -42,7 +42,7 @@ Auth: `POST /api/auth/register`, `/login`, `/logout`, and the four phone/email
 OTP routes. Analysis: `POST /api/analyze`, `POST /api/url-check`,
 `GET /api/analysis/history`, and `GET /api/analysis/<id>`. Dashboard:
 `GET /api/dashboard/stats`. Reports: `POST /api/report/generate`,
-`GET /api/report/<id>`, `/pdf`, and `/verify`.
+`GET /api/report/<id>`, `/pdf`, `/json`, and `/verify`.
 
 Authenticated endpoints require `Authorization: Bearer <token>`. Anonymous
 analysis remains available for the current frontend, while saved history and

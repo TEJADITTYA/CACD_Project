@@ -160,6 +160,17 @@
 
             </div>
 
+            <label class="source-label" for="messageSource">Message source</label>
+            <select id="messageSource" class="source-select">
+                <option value="sms">SMS</option>
+                <option value="email">Email</option>
+                <option value="social_media">Social media DM</option>
+                <option value="whatsapp">WhatsApp</option>
+                <option value="bank">Bank / KYC</option>
+                <option value="upi">UPI / payment</option>
+                <option value="other">Other</option>
+            </select>
+
 
             <!-- TEXTAREA -->
 
@@ -219,6 +230,14 @@ account to claim your prize."
                 </span>
 
             </button>
+
+            <div id="analysisStages" class="analysis-stages" aria-live="polite" hidden>
+                <span data-stage="0">Connecting to ScamDetect AI...</span>
+                <span data-stage="1">Extracting security indicators...</span>
+                <span data-stage="2">Checking suspicious patterns...</span>
+                <span data-stage="3">AI semantic analysis...</span>
+                <span data-stage="4">Generating security assessment...</span>
+            </div>
 
 
             <!-- SECURITY NOTE -->

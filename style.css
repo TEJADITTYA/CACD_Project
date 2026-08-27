@@ -19,6 +19,41 @@ button {
     font-family: inherit;
 }
 
+.source-label {
+    display: block;
+    margin: 16px 0 7px;
+    color: #9eb0c4;
+    font-size: 13px;
+}
+
+.source-select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #29445c;
+    border-radius: 8px;
+    background: #0b1b2b;
+    color: #f5f7fa;
+}
+
+.analysis-stages {
+    display: grid;
+    gap: 6px;
+    margin-top: 14px;
+    padding: 12px 14px;
+    border-left: 2px solid #39e878;
+    background: #0b1b2b;
+    color: #9eb0c4;
+    font-size: 13px;
+}
+
+.analysis-stages span:not(.active) {
+    opacity: .45;
+}
+
+.analysis-stages .active {
+    color: #39e878;
+}
+
 .navbar {
     height: 76px;
     padding: 0 7%;

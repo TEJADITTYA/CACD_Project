@@ -197,6 +197,7 @@ def normalize(result):
     score = max(0, min(100, int(result.get("risk_score", 0))))
     level = "SAFE" if score <= 20 else "LOW" if score <= 40 else "MEDIUM" if score <= 60 else "HIGH" if score <= 80 else "CRITICAL"
     result.update({"risk_score": score, "risk_level": level, "classification": "LIKELY_SCAM" if score > 60 else "NEEDS_REVIEW" if score > 20 else "SAFE"})
+    result.setdefault("detected_urls", result.get("urls", []))
     result.setdefault("actions", ["Verify the sender independently", "Avoid sharing credentials or payment details"])
     return result
 
@@ -377,6 +378,17 @@ def report_verify(report_id):
     if not report: return jsonify(success=True, verified=False, message="Report not found.")
     expected = hashlib.sha256(json.dumps(report["content"], sort_keys=True).encode()).hexdigest()
     return jsonify(success=True, verified=secrets.compare_digest(expected, report["report_hash"]), report_id=report_id, timestamp=serialize(report["created_at"]))
+
+
+@app.get("/api/report/<report_id>/json")
+def report_json(report_id):
+    report = find_one("reports", {"report_id": report_id})
+    if not report:
+        return jsonify(success=False, error="Report not found."), 404
+    payload = {"report_id": report["report_id"], "created_at": serialize(report["created_at"]), "report_hash": report["report_hash"], **report["content"]}
+    response = app.response_class(json.dumps(payload, indent=2), mimetype="application/json")
+    response.headers["Content-Disposition"] = f"attachment; filename={report_id}.json"
+    return response
 
 
 @app.get("/api/report/<report_id>/pdf")

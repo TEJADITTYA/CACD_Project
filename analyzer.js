@@ -10,6 +10,15 @@ messageInput.addEventListener("input", () => {
     charCount.textContent = `${messageInput.value.length} characters`;
 });
 
+function updateAnalysisStage(index) {
+    const stages = document.getElementById("analysisStages");
+    if (!stages) return;
+    stages.hidden = false;
+    stages.querySelectorAll("[data-stage]").forEach(stage => {
+        stage.classList.toggle("active", Number(stage.dataset.stage) === index);
+    });
+}
+
 
 // ==========================================
 // SCAM EXAMPLES
@@ -156,11 +165,18 @@ async function analyzeMessage() {
     }
 
     const button = document.querySelector(".analyze-button");
+    const source = document.getElementById("messageSource")?.value || "other";
 
     button.disabled = true;
     button.textContent = "🔄 Analyzing...";
+    updateAnalysisStage(0);
 
     try {
+
+        await new Promise(resolve => setTimeout(resolve, 180));
+        updateAnalysisStage(1);
+        await new Promise(resolve => setTimeout(resolve, 180));
+        updateAnalysisStage(2);
 
         const response = await fetch(
             "http://127.0.0.1:5000/api/analyze",
@@ -172,7 +188,8 @@ async function analyzeMessage() {
                 },
 
                 body: JSON.stringify({
-                    message: message
+                    message: message,
+                    source: source
                 })
             }
         );
@@ -183,6 +200,7 @@ async function analyzeMessage() {
             );
         }
 
+        updateAnalysisStage(3);
         const data = await response.json();
 
         console.log("Backend response:", data);
@@ -196,6 +214,9 @@ async function analyzeMessage() {
 
             return;
         }
+
+        updateAnalysisStage(4);
+        await new Promise(resolve => setTimeout(resolve, 180));
 
         // Save result globally
         window.lastAnalysisResult = data.result;
@@ -230,6 +251,9 @@ async function analyzeMessage() {
 
         button.textContent =
             "🛡 Analyze Message";
+
+        const stages = document.getElementById("analysisStages");
+        if (stages) stages.hidden = true;
     }
 }
 
