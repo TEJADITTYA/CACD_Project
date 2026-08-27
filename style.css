@@ -19,6 +19,10 @@ button {
     font-family: inherit;
 }
 
+.is-hidden {
+    display: none;
+}
+
 .source-label {
     display: block;
     margin: 16px 0 7px;
