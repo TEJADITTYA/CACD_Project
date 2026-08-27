@@ -385,6 +385,7 @@ def analyze_message(message):
 
         score += min(
             len(prizes) * 8,
+            
             20
         )
 
