@@ -1,0 +1,8 @@
+Flask>=3.0,<4
+Flask-Cors>=4.0,<7
+PyJWT>=2.8,<3
+pymongo>=4.6,<5
+python-dotenv>=1.0,<2
+reportlab>=4.0,<5
+gunicorn>=22.0,<24
+pytest>=8.0,<9
