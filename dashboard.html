@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Security Dashboard | ScamDetect AI</title>
+
+    <link rel="stylesheet"
+          href="dashboard.css">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+        🛡️ ScamDetect <span>AI</span>
+    </div>
+
+    <div class="nav-links">
+
+        <a href="index.html">Home</a>
+
+        <a href="analyzer.html">Analyzer</a>
+
+        <a class="active"
+           href="dashboard.html">
+            Dashboard
+        </a>
+
+        <a href="link-scanner.html">
+            Link Scanner
+        </a>
+
+        <a href="history.html">
+            History
+        </a>
+
+        <a href="contact.html">
+            Link Contact
+        </a>
+
+    </div>
+
+</nav>
+
+
+<main class="dashboard">
+
+    <section class="hero">
+
+        <div>
+
+            <span class="badge">
+                🛡️ SECURITY CENTER
+            </span>
+
+            <h1>
+                Security Dashboard
+            </h1>
+
+            <p>
+                Monitor your ScamDetect AI activity,
+                detected threats and security status.
+            </p>
+
+        </div>
+
+        <div class="status">
+
+            <span class="status-dot"></span>
+
+            System Protected
+
+        </div>
+
+    </section>
+
+
+    <!-- STATISTICS -->
+
+    <section class="stats">
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                🔍
+            </div>
+
+            <div>
+
+                <p>Total Scans</p>
+
+                <h2 id="totalScans">
+                    0
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card danger">
+
+            <div class="stat-icon">
+                🚨
+            </div>
+
+            <div>
+
+                <p>Scams Detected</p>
+
+                <h2 id="scamsDetected">
+                    0
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card warning">
+
+            <div class="stat-icon">
+                ⚠️
+            </div>
+
+            <div>
+
+                <p>High Risk</p>
+
+                <h2 id="highRisk">
+                    0
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card safe">
+
+            <div class="stat-icon">
+                🛡️
+            </div>
+
+            <div>
+
+                <p>Safe Messages</p>
+
+                <h2 id="safeMessages">
+                    0
+                </h2>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- QUICK ACTIONS -->
+
+    <section class="section">
+
+        <h2>
+            Quick Security Tools
+        </h2>
+
+        <div class="tools">
+
+            <a href="analyzer.html"
+               class="tool-card">
+
+                <span>🧠</span>
+
+                <h3>
+                    Message Analyzer
+                </h3>
+
+                <p>
+                    Analyze suspicious messages
+                    using ScamDetect AI.
+                </p>
+
+            </a>
+
+
+            <a href="link-scanner.html"
+               class="tool-card">
+
+                <span>🔗</span>
+
+                <h3>
+                    Link Scanner
+                </h3>
+
+                <p>
+                    Check URLs for suspicious
+                    patterns.
+                </p>
+
+            </a>
+
+
+            <a href="history.html"
+               class="tool-card">
+
+                <span>📜</span>
+
+                <h3>
+                    Scan History
+                </h3>
+
+                <p>
+                    Review your previous security
+                    scans.
+                </p>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- SECURITY TIPS -->
+
+    <section class="security-card">
+
+        <div class="shield">
+            🛡️
+        </div>
+
+        <div>
+
+            <h2>
+                Stay Safe Online
+            </h2>
+
+            <p>
+                Never share OTPs, passwords or
+                banking credentials with unknown
+                people.
+            </p>
+
+            <ul>
+
+                <li>
+                    ✓ Verify suspicious links
+                </li>
+
+                <li>
+                    ✓ Don't transfer money to unknown accounts
+                </li>
+
+                <li>
+                    ✓ Verify unexpected messages
+                </li>
+
+                <li>
+                    ✓ Never share OTPs
+                </li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+</main>
+
+<script src="dashboard.js"></script>
+
+</body>
+
+</html>

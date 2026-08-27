@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Email Verification | ScamDetect AI</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+
+<!-- ==========================================
+     NAVBAR
+========================================== -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        🛡️ <strong>ScamDetect</strong>
+        <span>AI</span>
+    </div>
+
+    <div class="nav-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="analyzer.html">
+            Analyzer
+        </a>
+
+        <a href="contact.html"
+           class="active">
+            Link Contact
+        </a>
+
+        <a href="features.html">
+            Features
+        </a>
+
+        <a href="how-it-works.html">
+            How It Works
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- ==========================================
+     EMAIL VERIFICATION
+========================================== -->
+
+<main class="verification-page">
+
+    <a href="contact.html"
+       class="back-link">
+
+        ← Back to Contact Options
+
+    </a>
+
+
+    <div class="verification-card">
+
+        <div class="verification-icon email-verification-icon">
+            ✉️
+        </div>
+
+        <div class="security-label">
+            EMAIL SECURITY
+        </div>
+
+        <h1>
+            Verify your email
+        </h1>
+
+        <p class="verification-description">
+            Enter your email address and we'll
+            generate a secure one-time password.
+        </p>
+
+
+        <!-- EMAIL INPUT -->
+
+        <label>
+            Email Address
+        </label>
+
+        <input
+            type="email"
+            id="emailAddress"
+            class="full-input"
+            placeholder="you@example.com"
+        >
+
+
+        <p id="emailError"
+           class="error-message">
+        </p>
+
+
+        <button
+            id="sendEmailButton"
+            class="primary-button"
+            onclick="sendEmailOTP()">
+
+            Send OTP
+
+        </button>
+
+
+        <!-- =====================================
+             OTP SECTION
+        ====================================== -->
+
+        <div id="otpSection"
+             class="otp-area"
+             style="display:none;">
+
+            <div class="otp-divider"></div>
+
+            <h2>
+                Enter verification code
+            </h2>
+
+            <p id="otpMessage">
+                Enter the 6-digit OTP.
+            </p>
+
+
+            <div class="otp-boxes">
+
+                <input
+                    id="otp1"
+                    class="contact-otp"
+                    maxlength="1"
+                    inputmode="numeric">
+
+                <input
+                    id="otp2"
+                    class="contact-otp"
+                    maxlength="1"
+                    inputmode="numeric">
+
+                <input
+                    id="otp3"
+                    class="contact-otp"
+                    maxlength="1"
+                    inputmode="numeric">
+
+                <input
+                    id="otp4"
+                    class="contact-otp"
+                    maxlength="1"
+                    inputmode="numeric">
+
+                <input
+                    id="otp5"
+                    class="contact-otp"
+                    maxlength="1"
+                    inputmode="numeric">
+
+                <input
+                    id="otp6"
+                    class="contact-otp"
+                    maxlength="1"
+                    inputmode="numeric">
+
+            </div>
+
+
+            <div id="demoOtp"
+                 class="demo-otp">
+            </div>
+
+
+            <p id="otpError"
+               class="error-message">
+            </p>
+
+
+            <button
+                class="primary-button"
+                onclick="verifyContactOTP()">
+
+                Verify Email
+
+            </button>
+
+        </div>
+
+
+        <!-- SUCCESS -->
+
+        <div id="successSection"
+             class="success-section"
+             style="display:none;">
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <h2>
+                Email Verified
+            </h2>
+
+            <p>
+                Your email address has been
+                successfully verified.
+            </p>
+
+            <a href="contact.html"
+               class="secondary-button">
+
+                Back to Contact
+
+            </a>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script src="email-verification.js"></script>
+
+</body>
+
+</html>

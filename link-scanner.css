@@ -1,0 +1,192 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #06111f;
+    color: white;
+}
+
+.navbar {
+    height: 76px;
+    padding: 0 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #071522;
+    border-bottom: 1px solid #1b3147;
+}
+
+.logo {
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #35eb7d;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: #91a4b8;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.nav-links a:hover,
+.nav-links .active {
+    color: #35eb7d;
+}
+
+.scanner {
+    width: 80%;
+    max-width: 900px;
+    margin: 80px auto;
+    text-align: center;
+}
+
+.badge {
+    color: #35eb7d;
+    background: #0b291b;
+    border: 1px solid #256b47;
+    padding: 8px 14px;
+    border-radius: 30px;
+    font-size: 12px;
+}
+
+h1 {
+    font-size: 44px;
+    margin-top: 22px;
+}
+
+.scanner > p {
+    color: #8ea3b8;
+    margin-top: 12px;
+}
+
+.scanner-box {
+    margin-top: 40px;
+    display: flex;
+    gap: 12px;
+}
+
+.scanner-box input {
+    flex: 1;
+    padding: 18px;
+    border-radius: 10px;
+    border: 1px solid #294158;
+    background: #0b1c2d;
+    color: white;
+    font-size: 15px;
+    outline: none;
+}
+
+.scanner-box button {
+    padding: 0 28px;
+    border: none;
+    border-radius: 10px;
+    background: #35e979;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.result {
+    margin-top: 30px;
+    background: #0b1c2d;
+    border: 1px solid #263e55;
+    padding: 35px;
+    border-radius: 18px;
+    text-align: left;
+}
+
+.risk-icon {
+    font-size: 40px;
+}
+
+.score {
+    margin-top: 15px;
+    color: #a4b6c7;
+}
+
+.score strong {
+    color: #ff6363;
+    font-size: 25px;
+}
+
+.reason {
+    margin-top: 10px;
+    padding: 12px;
+    background: #101f30;
+    border-radius: 8px;
+    color: #c2cfdb;
+}
+
+.recommendation {
+    margin-top: 25px;
+    padding: 20px;
+    background: #0b291b;
+    border: 1px solid #286b47;
+    border-radius: 12px;
+}
+
+.recommendation p {
+    margin-top: 8px;
+    color: #a9b9c6;
+}
+
+.examples {
+    margin-top: 40px;
+}
+
+.examples h2 {
+    margin-bottom: 15px;
+}
+
+.examples button {
+    margin: 5px;
+    padding: 10px 15px;
+    background: #102337;
+    color: #b7c7d5;
+    border: 1px solid #294158;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.examples button:hover {
+    border-color: #35e979;
+    color: #35e979;
+}
+
+#error {
+    color: #ff6969;
+}
+
+@media(max-width: 700px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .scanner {
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    .scanner-box {
+        flex-direction: column;
+    }
+
+    .scanner-box button {
+        padding: 15px;
+    }
+}

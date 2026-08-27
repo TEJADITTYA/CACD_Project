@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Link Phone | ScamDetect AI</title>
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* avoid inline styles: utility class to hide steps */
+        .hidden { display: none; }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <a href="index.html" class="logo" title="ScamDetect AI Home">
+            🛡️ ScamDetect <span>AI</span>
+        </a>
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="analyzer.html">
+                Analyzer
+            </a>
+
+            <a href="phone.html" class="active">
+                Link Phone
+            </a>
+
+            <a href="features.html">
+                Features
+            </a>
+
+            <a href="how-it-works.html">
+                How It Works
+            </a>
+        </nav>
+
+        <a href="analyzer.html" class="nav-btn">
+            Analyze Message
+        </a>
+
+    </header>
+
+
+    <!-- PHONE PAGE -->
+
+    <main class="phone-page">
+
+        <div class="phone-container">
+
+            <!-- ICON -->
+
+            <div class="phone-icon">
+                📱
+            </div>
+
+
+            <!-- TITLE -->
+
+            <div class="page-title">
+
+                <div class="tag">
+                    📱 PHONE SECURITY
+                </div>
+
+                <h1>
+                    Link your phone number
+                </h1>
+
+                <p>
+                    Verify your phone number with ScamDetect AI
+                    to connect it with your security profile.
+                </p>
+
+            </div>
+
+
+            <!-- STEP 1 -->
+
+            <div id="phoneStep"
+                 class="phone-card">
+
+                <div class="card-heading">
+
+                    <h2>
+                        Enter your phone number
+                    </h2>
+
+                    <p>
+                        We will send a verification OTP.
+                    </p>
+
+                </div>
+
+
+                <label for="phoneNumber">
+                    Phone Number
+                </label>
+
+
+                <div class="phone-input">
+
+                    <select id="countryCode" title="Country Code">
+
+                        <option value="+91">
+                            🇮🇳 +91
+                        </option>
+
+                        <option value="+1">
+                            🇺🇸 +1
+                        </option>
+
+                        <option value="+44">
+                            🇬🇧 +44
+                        </option>
+
+                        <option value="+61">
+                            🇦🇺 +61
+                        </option>
+
+                    </select>
+
+
+                    <input
+                        type="tel"
+                        id="phoneNumber"
+                        placeholder="9876543210"
+                        maxlength="10"
+                    >
+
+                </div>
+
+
+                <p id="phoneError"
+                   class="form-error">
+                </p>
+
+
+                <button
+                    id="sendOtpButton"
+                    class="primary-btn full-btn"
+                    onclick="sendOTP()">
+
+                    🔐 Send Verification OTP
+
+                </button>
+
+
+                <div class="privacy-note">
+
+                    🔒 Your phone number is used only
+                    for verification.
+
+                </div>
+
+            </div>
+
+
+            <!-- STEP 2 -->
+
+              <div id="otpStep"
+                  class="phone-card hidden">
+
+                <div class="card-heading">
+
+                    <div class="success-icon">
+                        🔐
+                    </div>
+
+                    <h2>
+                        Verify your phone
+                    </h2>
+
+                    <p id="otpMessage">
+                        Enter the OTP sent to your phone.
+                    </p>
+
+                </div>
+
+
+                <label>
+                    Verification Code
+                </label>
+
+
+                <div class="otp-inputs">
+
+                    <input
+                        maxlength="1"
+                        class="otp"
+                        id="otp1">
+
+                    <input
+                        maxlength="1"
+                        class="otp"
+                        id="otp2">
+
+                    <input
+                        maxlength="1"
+                        class="otp"
+                        id="otp3">
+
+                    <input
+                        maxlength="1"
+                        class="otp"
+                        id="otp4">
+
+                    <input
+                        maxlength="1"
+                        class="otp"
+                        id="otp5">
+
+                    <input
+                        maxlength="1"
+                        class="otp"
+                        id="otp6">
+
+                </div>
+
+
+                <p id="otpError"
+                   class="form-error">
+                </p>
+
+
+                <button
+                    class="primary-btn full-btn"
+                    onclick="verifyOTP()">
+
+                    ✅ Verify Phone Number
+
+                </button>
+
+
+                <button
+                    class="secondary-btn full-btn"
+                    onclick="goBackToPhone()">
+
+                    ← Change Phone Number
+
+                </button>
+
+
+                <!-- DEMO OTP -->
+
+                <div id="demoOtp"
+                     class="demo-otp">
+                </div>
+
+            </div>
+
+
+            <!-- STEP 3 -->
+
+              <div id="successStep"
+                  class="phone-card success-card hidden">
+
+                <div class="verified-icon">
+                    ✓
+                </div>
+
+                <h2>
+                    Phone Verified!
+                </h2>
+
+                <p>
+                    Your phone number has been successfully
+                    linked with ScamDetect AI.
+                </p>
+
+
+                <div class="verified-number"
+                     id="verifiedNumber">
+                </div>
+
+
+                <div class="security-message">
+
+                    🛡️ Your ScamDetect security profile
+                    is now connected to this phone number.
+
+                </div>
+
+
+                <a href="analyzer.html"
+                   class="primary-btn full-btn">
+
+                    🔍 Analyze a Message
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script src="phone.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Link Scanner | ScamDetect AI</title>
+
+<link rel="stylesheet"
+href="link-scanner.css">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+        🛡️ ScamDetect <span>AI</span>
+    </div>
+
+    <div class="nav-links">
+
+        <a href="index.html">Home</a>
+        <a href="analyzer.html">Analyzer</a>
+        <a href="dashboard.html">Dashboard</a>
+
+        <a class="active"
+           href="link-scanner.html">
+            Link Scanner
+        </a>
+
+        <a href="history.html">
+            History
+        </a>
+
+        <a href="contact.html">
+            Link Contact
+        </a>
+
+    </div>
+
+</nav>
+
+
+<main class="scanner">
+
+    <span class="badge">
+        🔗 URL SECURITY SCANNER
+    </span>
+
+    <h1>
+        Check a suspicious link
+    </h1>
+
+    <p>
+        Analyze a URL for common scam and
+        phishing indicators.
+    </p>
+
+
+    <div class="scanner-box">
+
+        <input
+            id="urlInput"
+            type="text"
+            placeholder="https://example.com"
+        >
+
+        <button onclick="scanURL()">
+            Scan Link
+        </button>
+
+    </div>
+
+
+    <p id="error"></p>
+
+
+    <div
+        id="result"
+        class="result"
+        style="display:none;"
+    >
+
+        <div id="riskIcon"
+             class="risk-icon">
+        </div>
+
+        <h2 id="riskTitle"></h2>
+
+        <div class="score">
+
+            Risk Score:
+            <strong id="riskScore"></strong>
+
+        </div>
+
+        <div id="reasons"></div>
+
+        <div class="recommendation">
+
+            🛡️
+            <strong>
+                Security Recommendation
+            </strong>
+
+            <p id="recommendationText"></p>
+
+        </div>
+
+    </div>
+
+
+    <div class="examples">
+
+        <h2>
+            Try an example
+        </h2>
+
+        <button onclick="loadExample(1)">
+            Suspicious Prize Link
+        </button>
+
+        <button onclick="loadExample(2)">
+            Fake Banking Link
+        </button>
+
+        <button onclick="loadExample(3)">
+            Normal Website
+        </button>
+
+    </div>
+
+</main>
+
+
+<script src="link-scanner.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Scam Analyzer | ScamDetect AI</title>
+
+    <!-- IMPORTANT: make sure style.css is in the SAME folder -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <a href="index.html" class="logo">
+        🛡️ ScamDetect <span>AI</span>
+    </a>
+
+    <nav>
+        <a href="index.html">Home</a>
+
+        <a href="analyzer.html" class="active">
+            Analyzer
+        </a>
+
+        <a href="contact.html">
+            Link Contact
+        </a>
+
+        <a href="features.html">
+            Features
+        </a>
+
+        <a href="how-it-works.html">
+            How It Works
+        </a>
+    </nav>
+
+    <a href="analyzer.html" class="nav-btn">
+        Analyze Message
+    </a>
+
+</header>
+
+
+<!-- ================= ANALYZER PAGE ================= -->
+
+<main class="analyzer-page">
+
+    <!-- PAGE HEADER -->
+
+    <section class="page-title">
+
+        <div class="tag">
+            🛡️ AI-POWERED SECURITY
+        </div>
+
+        <h1>
+            Scam Message
+            <span>Analyzer</span>
+        </h1>
+
+        <p>
+            Detect suspicious messages, phishing attempts,
+            impersonation, payment fraud and other scam indicators
+            using ScamDetect AI.
+        </p>
+
+    </section>
+
+
+    <!-- ================= ANALYZER ================= -->
+
+    <section class="analyzer">
+
+
+        <!-- ================= INPUT CARD ================= -->
+
+        <div class="input-box">
+
+            <div class="box-header">
+
+                <div>
+                    <h3>🔍 Message Analysis</h3>
+
+                    <span>
+                        Paste a suspicious SMS, DM, email or message
+                    </span>
+                </div>
+
+            </div>
+
+
+            <!-- EXAMPLES -->
+
+            <div class="example-controls">
+
+                <select
+                    id="exampleSelect"
+                    aria-label="Choose a scam example">
+
+                    <option value="">
+                        Select a scam example
+                    </option>
+
+                    <option value="prize">
+                        🎁 Prize / Lottery Scam
+                    </option>
+
+                    <option value="bank">
+                        🏦 Bank / KYC Scam
+                    </option>
+
+                    <option value="upi">
+                        💳 UPI / Payment Scam
+                    </option>
+
+                    <option value="otp">
+                        🔐 OTP Scam
+                    </option>
+
+                    <option value="job">
+                        💼 Fake Job Scam
+                    </option>
+
+                    <option value="delivery">
+                        📦 Delivery Scam
+                    </option>
+
+                    <option value="investment">
+                        📈 Investment Scam
+                    </option>
+
+                    <option value="tech">
+                        👨‍💻 Tech Support Scam
+                    </option>
+
+                    <option value="loan">
+                        💰 Fake Loan Scam
+                    </option>
+
+                    <option value="social">
+                        📱 Social Media Impersonation
+                    </option>
+
+                </select>
+
+                <button
+                    type="button"
+                    onclick="loadSelectedExample()">
+
+                    Load Example
+
+                </button>
+
+            </div>
+
+
+            <!-- TEXTAREA -->
+
+            <div class="message-input-wrapper">
+
+                <textarea
+                    id="messageInput"
+                    maxlength="5000"
+                    placeholder="Paste the suspicious message here...
+
+Example:
+Congratulations! You have won ₹25,00,000.
+Click this link immediately and verify your bank
+account to claim your prize."
+                ></textarea>
+
+                <div class="input-overlay">
+                    🔒 Your message is analyzed securely
+                </div>
+
+            </div>
+
+
+            <!-- FOOTER -->
+
+            <div class="textarea-footer">
+
+                <span id="charCount">
+                    0 / 5000 characters
+                </span>
+
+                <button
+                    type="button"
+                    onclick="clearMessage()">
+
+                    🗑 Clear
+
+                </button>
+
+            </div>
+
+
+            <!-- ANALYZE BUTTON -->
+
+            <button
+                class="analyze-button"
+                id="analyzeButton"
+                type="button"
+                onclick="analyzeMessage()">
+
+                <span id="analyzeIcon">
+                    🛡️
+                </span>
+
+                <span id="analyzeText">
+                    Analyze Message
+                </span>
+
+            </button>
+
+
+            <!-- SECURITY NOTE -->
+
+            <div class="security-note">
+
+                <span>🔐</span>
+
+                <div>
+                    <strong>Privacy Protected</strong>
+
+                    <p>
+                        Your message is analyzed for security indicators
+                        and is not publicly displayed.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= RESULT CARD ================= -->
+
+        <div class="result-box">
+
+
+            <!-- EMPTY STATE -->
+
+            <div
+                id="emptyState"
+                class="empty-state">
+
+                <div class="empty-icon">
+                    🛡️
+                </div>
+
+                <h3>
+                    Security Report
+                </h3>
+
+                <p>
+                    Your scam analysis will appear here after
+                    you analyze a message.
+                </p>
+
+                <div class="empty-features">
+
+                    <span>✓ Scam Detection</span>
+
+                    <span>✓ Risk Score</span>
+
+                    <span>✓ Threat Indicators</span>
+
+                    <span>✓ Security Advice</span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= RESULT CONTENT ================= -->
+
+            <div
+                id="resultContent"
+                class="result-content">
+
+
+                <!-- RESULT HEADER -->
+
+                <div class="result-header">
+
+                    <div>
+
+                        <span class="result-label">
+                            AI RISK ASSESSMENT
+                        </span>
+
+                        <h3 id="riskTitle">
+                            High Risk
+                        </h3>
+
+                    </div>
+
+
+                    <div class="score-circle">
+
+                        <span id="riskScore">
+                            0
+                        </span>
+
+                        <small>%</small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RISK BAR -->
+
+                <div class="risk-bar">
+
+                    <div id="riskProgress"></div>
+
+                </div>
+
+
+                <!-- RISK LEVEL -->
+
+                <div class="risk-status">
+
+                    <span class="status-indicator"></span>
+
+                    <span id="riskStatusText">
+                        Waiting for analysis
+                    </span>
+
+                </div>
+
+
+                <!-- SUMMARY -->
+
+                <div class="summary">
+
+                    <div class="summary-heading">
+
+                        <span>
+                            📊
+                        </span>
+
+                        <h4>
+                            Analysis Summary
+                        </h4>
+
+                    </div>
+
+                    <p id="summaryText">
+                    </p>
+
+                </div>
+
+
+                <!-- INDICATORS -->
+
+                <h3 class="indicator-title">
+                    ⚠️ Detected Threat Indicators
+                </h3>
+
+                <div id="indicators">
+                </div>
+
+
+                <!-- RECOMMENDATION -->
+
+                <div class="recommendation">
+
+                    <div class="recommendation-icon">
+                        🛡️
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Security Recommendation
+                        </h4>
+
+                        <p id="recommendationText">
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- REPORT BUTTON -->
+
+                <button
+                    id="generateReportBtn"
+                    class="report-btn"
+                    type="button"
+                    onclick="generateSecurityReport()">
+
+                    📄 Generate Security Report
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= BOTTOM INFO ================= -->
+
+    <section class="analyzer-info">
+
+        <div class="info-card">
+
+            <div class="info-icon">
+                🚨
+            </div>
+
+            <div>
+                <h3>What do we detect?</h3>
+
+                <p>
+                    Phishing links, fake offers, urgency tactics,
+                    impersonation, payment requests, OTP requests
+                    and suspicious financial activity.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="info-icon">
+                🤖
+            </div>
+
+            <div>
+                <h3>AI Security Analysis</h3>
+
+                <p>
+                    ScamDetect AI evaluates multiple signals
+                    within a message to generate a risk score
+                    and security recommendation.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="info-icon">
+                🔐
+            </div>
+
+            <div>
+                <h3>Stay Protected</h3>
+
+                <p>
+                    Never share OTPs, passwords or banking
+                    credentials with unknown people or links.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script src="./analyzer.js"></script>
+
+</body>
+</html>

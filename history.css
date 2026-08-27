@@ -1,0 +1,180 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #06111f;
+    color: white;
+}
+
+.navbar {
+    height: 76px;
+    padding: 0 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #071522;
+    border-bottom: 1px solid #1b3147;
+}
+
+.logo {
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #35eb7d;
+}
+
+.nav-links {
+    display: flex;
+    gap: 23px;
+}
+
+.nav-links a {
+    color: #91a4b8;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.nav-links a:hover,
+.nav-links .active {
+    color: #35eb7d;
+}
+
+.history-page {
+    width: 82%;
+    max-width: 1100px;
+    margin: 60px auto;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.badge {
+    color: #35eb7d;
+    border: 1px solid #246b47;
+    background: #0b291b;
+    padding: 8px 13px;
+    border-radius: 30px;
+    font-size: 12px;
+}
+
+h1 {
+    font-size: 42px;
+    margin-top: 18px;
+}
+
+.history-header p {
+    color: #8da1b5;
+    margin-top: 10px;
+}
+
+.clear-btn {
+    background: #35191c;
+    color: #ff7777;
+    border: 1px solid #703237;
+    padding: 12px 18px;
+    border-radius: 9px;
+    cursor: pointer;
+}
+
+.history-card {
+    background: #0c1c2d;
+    border: 1px solid #20374e;
+    padding: 23px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.history-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.risk {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.high {
+    background: #421b20;
+    color: #ff7373;
+}
+
+.medium {
+    background: #423619;
+    color: #ffc857;
+}
+
+.low {
+    background: #123522;
+    color: #4ff18b;
+}
+
+.message {
+    margin-top: 16px;
+    color: #c0ccd7;
+    line-height: 1.6;
+}
+
+.date {
+    margin-top: 12px;
+    color: #71869a;
+    font-size: 12px;
+}
+
+.empty {
+    text-align: center;
+    padding: 80px 20px;
+    border: 1px dashed #294158;
+    border-radius: 18px;
+}
+
+.empty div {
+    font-size: 45px;
+}
+
+.empty h2 {
+    margin-top: 15px;
+}
+
+.empty p {
+    margin: 10px;
+    color: #8da1b5;
+}
+
+.empty a {
+    display: inline-block;
+    margin-top: 15px;
+    color: #35eb7d;
+    text-decoration: none;
+}
+
+@media(max-width: 800px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .history-page {
+        width: 90%;
+    }
+
+    .history-header {
+        display: block;
+    }
+
+    .clear-btn {
+        margin-top: 20px;
+    }
+}

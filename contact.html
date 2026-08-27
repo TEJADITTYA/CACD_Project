@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Link Contact | ScamDetect AI</title>
+
+
+    <style>
+
+        /* =========================================
+           RESET
+        ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background:
+                #06111f;
+
+            color:
+                #ffffff;
+
+            min-height:
+                100vh;
+        }
+
+
+        /* =========================================
+           NAVBAR
+        ========================================= */
+
+        .navbar {
+
+            height: 80px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding:
+                0 7%;
+
+            background:
+                #071321;
+
+            border-bottom:
+                1px solid #1d3045;
+
+            position:
+                sticky;
+
+            top: 0;
+
+            z-index: 100;
+        }
+
+
+        .logo {
+
+            font-size:
+                22px;
+
+            font-weight:
+                700;
+
+            color:
+                white;
+        }
+
+
+        .logo span {
+
+            color:
+                #39e77d;
+        }
+
+
+        .nav-links {
+
+            display:
+                flex;
+
+            gap:
+                30px;
+
+            align-items:
+                center;
+        }
+
+
+        .nav-links a {
+
+            color:
+                #9aaabd;
+
+            text-decoration:
+                none;
+
+            font-size:
+                14px;
+
+            transition:
+                0.3s;
+        }
+
+
+        .nav-links a:hover {
+
+            color:
+                #39e77d;
+        }
+
+
+        .nav-links .active {
+
+            color:
+                #39e77d;
+        }
+
+
+        .analyze-btn {
+
+            padding:
+                12px 20px;
+
+            border:
+                1px solid #39e77d;
+
+            border-radius:
+                8px;
+
+            color:
+                #39e77d !important;
+
+            font-weight:
+                600;
+        }
+
+
+        /* =========================================
+           MAIN
+        ========================================= */
+
+        .container {
+
+            width:
+                90%;
+
+            max-width:
+                1100px;
+
+            margin:
+                auto;
+
+            padding:
+                70px 0;
+        }
+
+
+        .hero {
+
+            text-align:
+                center;
+
+            margin-bottom:
+                50px;
+        }
+
+
+        .security-icon {
+
+            width:
+                70px;
+
+            height:
+                70px;
+
+            margin:
+                0 auto 20px;
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            background:
+                #0c2b1b;
+
+            border:
+                1px solid #2fae62;
+
+            border-radius:
+                18px;
+
+            font-size:
+                32px;
+        }
+
+
+        .badge {
+
+            display:
+                inline-block;
+
+            padding:
+                8px 15px;
+
+            border-radius:
+                30px;
+
+            background:
+                #092819;
+
+            border:
+                1px solid #218b4c;
+
+            color:
+                #39e77d;
+
+            font-size:
+                12px;
+
+            font-weight:
+                bold;
+
+            letter-spacing:
+                1px;
+
+            margin-bottom:
+                20px;
+        }
+
+
+        .hero h1 {
+
+            font-size:
+                48px;
+
+            margin-bottom:
+                15px;
+        }
+
+
+        .hero p {
+
+            color:
+                #8ea4bc;
+
+            font-size:
+                16px;
+
+            max-width:
+                650px;
+
+            margin:
+                auto;
+
+            line-height:
+                1.6;
+        }
+
+
+        /* =========================================
+           CARDS
+        ========================================= */
+
+        .contact-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap:
+                25px;
+        }
+
+
+        .contact-card {
+
+            background:
+                #0c1b2b;
+
+            border:
+                1px solid #223a52;
+
+            border-radius:
+                18px;
+
+            padding:
+                30px;
+
+            transition:
+                0.3s;
+        }
+
+
+        .contact-card:hover {
+
+            transform:
+                translateY(-5px);
+
+            border-color:
+                #2d9960;
+
+            box-shadow:
+                0 15px 40px
+                rgba(0,0,0,0.25);
+        }
+
+
+        .card-icon {
+
+            width:
+                52px;
+
+            height:
+                52px;
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            border-radius:
+                14px;
+
+            background:
+                #0b3420;
+
+            font-size:
+                25px;
+
+            margin-bottom:
+                20px;
+        }
+
+
+        .contact-card h2 {
+
+            font-size:
+                25px;
+
+            margin-bottom:
+                10px;
+        }
+
+
+        .contact-card p {
+
+            color:
+                #8ea4bc;
+
+            line-height:
+                1.6;
+
+            margin-bottom:
+                25px;
+        }
+
+
+        .verify-btn {
+
+            display:
+                block;
+
+            width:
+                100%;
+
+            padding:
+                14px;
+
+            background:
+                #39e77d;
+
+            color:
+                #04100a;
+
+            border:
+                none;
+
+            border-radius:
+                8px;
+
+            font-size:
+                15px;
+
+            font-weight:
+                bold;
+
+            cursor:
+                pointer;
+
+            text-align:
+                center;
+
+            text-decoration:
+                none;
+
+            transition:
+                0.3s;
+        }
+
+
+        .verify-btn:hover {
+
+            background:
+                #25c965;
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        /* =========================================
+           SECURITY INFO
+        ========================================= */
+
+        .security-info {
+
+            margin-top:
+                30px;
+
+            padding:
+                22px;
+
+            border-radius:
+                15px;
+
+            background:
+                rgba(56, 231, 125, 0.05);
+
+            border:
+                1px solid rgba(56, 231, 125, 0.15);
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                15px;
+        }
+
+
+        .security-info-icon {
+
+            font-size:
+                28px;
+        }
+
+
+        .security-info strong {
+
+            color:
+                #39e77d;
+
+            display:
+                block;
+
+            margin-bottom:
+                5px;
+        }
+
+
+        .security-info p {
+
+            color:
+                #8ea4bc;
+
+            font-size:
+                14px;
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 800px) {
+
+            .navbar {
+
+                padding:
+                    0 20px;
+            }
+
+
+            .nav-links {
+
+                display:
+                    none;
+            }
+
+
+            .contact-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .hero h1 {
+
+                font-size:
+                    36px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         NAVBAR
+    ========================================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            🛡️ ScamDetect
+            <span>AI</span>
+
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="analyzer.html">
+                Analyzer
+            </a>
+
+            <a href="contact.html"
+               class="active">
+                Link Contact
+            </a>
+
+            <a href="features.html">
+                Features
+            </a>
+
+            <a href="how-it-works.html">
+                How It Works
+            </a>
+
+            <a href="analyzer.html"
+               class="analyze-btn">
+                Analyze Message
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =========================================
+         MAIN CONTENT
+    ========================================= -->
+
+    <main class="container">
+
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <div class="security-icon">
+                🔐
+            </div>
+
+
+            <div class="badge">
+                SECURE YOUR PROFILE
+            </div>
+
+
+            <h1>
+                Link your contact
+            </h1>
+
+
+            <p>
+                Connect your phone number or email address
+                to your ScamDetect AI security profile.
+                Verification helps protect your account
+                from unauthorized access.
+            </p>
+
+        </section>
+
+
+
+        <!-- =====================================
+             CONTACT CARDS
+        ====================================== -->
+
+        <section class="contact-grid">
+
+
+            <!-- PHONE -->
+
+            <div class="contact-card">
+
+                <div class="card-icon">
+                    📱
+                </div>
+
+
+                <h2>
+                    Phone Number
+                </h2>
+
+
+                <p>
+                    Verify your mobile number using a
+                    secure one-time password.
+                </p>
+
+
+                <a href="phone-verification.html"
+                   class="verify-btn">
+
+                    Verify Phone →
+
+                </a>
+
+            </div>
+
+
+
+            <!-- EMAIL -->
+
+            <div class="contact-card">
+
+                <div class="card-icon">
+                    ✉️
+                </div>
+
+
+                <h2>
+                    Email Address
+                </h2>
+
+
+                <p>
+                    Verify your email address using a
+                    secure one-time password.
+                </p>
+
+
+                <a href="email-verification.html"
+                   class="verify-btn">
+
+                    Verify Email →
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             SECURITY INFORMATION
+        ====================================== -->
+
+        <div class="security-info">
+
+            <div class="security-info-icon">
+                🛡️
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Your information is protected
+                </strong>
+
+
+                <p>
+                    ScamDetect AI uses OTP verification
+                    to help protect your security profile.
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </main>
+
+
+</body>
+
+</html>
