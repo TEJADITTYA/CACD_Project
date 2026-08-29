@@ -1,5 +1,9 @@
 const API_URL =
-    window.CYBERSHIELD_API_URL || "";
+    window.CYBERSHIELD_API_URL || (
+        window.location.protocol === "file:" || window.location.port === "5173"
+            ? "http://127.0.0.1:5000"
+            : ""
+    );
 
 
 let fullPhoneNumber = "";

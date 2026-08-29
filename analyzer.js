@@ -1,4 +1,8 @@
-const API_BASE = window.CYBERSHIELD_API_URL || "";
+const API_BASE = window.CYBERSHIELD_API_URL || (
+    window.location.protocol === "file:" || window.location.port === "5173"
+        ? "http://127.0.0.1:5000"
+        : ""
+);
 const messageInput = document.getElementById("messageInput");
 const charCount = document.getElementById("charCount");
 
