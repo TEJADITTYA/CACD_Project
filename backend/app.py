@@ -37,9 +37,9 @@ try:
 except ImportError:
     A4 = getSampleStyleSheet = Paragraph = SimpleDocTemplate = Spacer = None
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="../", static_url_path="")
 app.config["MAX_CONTENT_LENGTH"] = 64 * 1024
-CORS(app, resources={r"/api/*": {"origins": os.getenv("CORS_ORIGINS", "*").split(",")}})
+CORS(app, resources={r"/*": {"origins": os.getenv("CORS_ORIGINS", "*").split(",")}})
 JWT_SECRET = os.getenv("JWT_SECRET", "development-only-change-me")
 OTP_TTL = 300
 otp_store = {}
@@ -227,7 +227,7 @@ def security_headers(response):
 
 @app.get("/")
 def home():
-    return jsonify(success=True, service="Cyber Shield", version="2.0")
+    return app.send_static_file("index.html")
 
 
 @app.get("/api/health")
@@ -409,6 +409,16 @@ def report_pdf(report_id):
     for label, value in (("Report ID", report["report_id"]), ("Risk", f"{content['risk_score']}/100 - {content['classification']}"), ("Generated", report["created_at"].isoformat()), ("Message snapshot", content["preview"]), ("Threat summary", content["summary"]), ("Recommendation", content["recommendation"]), ("Integrity hash", report["report_hash"])):
         story.extend([Paragraph(f"<b>{label}</b>", styles["Heading3"]), Paragraph(str(value), styles["BodyText"]), Spacer(1, 8)])
     doc.build(story); stream.seek(0); return send_file(stream, as_attachment=True, download_name=f"{report_id}.pdf", mimetype="application/pdf")
+
+
+@app.route("/<path:path>", methods=["GET"])
+def serve_frontend(path):
+    if path.startswith("api/"):
+        return jsonify(success=False, error="Not found."), 404
+    file_path = os.path.normpath(os.path.join("..", path))
+    if path and os.path.exists(file_path):
+        return app.send_static_file(path)
+    return app.send_static_file("index.html")
 
 
 @app.errorhandler(413)

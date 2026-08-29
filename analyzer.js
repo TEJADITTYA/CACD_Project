@@ -1,3 +1,4 @@
+const API_BASE = window.CYBERSHIELD_API_URL || "";
 const messageInput = document.getElementById("messageInput");
 const charCount = document.getElementById("charCount");
 
@@ -179,7 +180,7 @@ async function analyzeMessage() {
         updateAnalysisStage(2);
 
         const response = await fetch(
-            "http://127.0.0.1:5000/api/analyze",
+            `${API_BASE}/api/analyze`,
             {
                 method: "POST",
 
