@@ -18,7 +18,9 @@ python app.py
 ```
 
 Open `analyzer.html` with a static server such as VS Code Live Server, or use
-the existing Vite setup. The API is available at `http://127.0.0.1:5000`.
+the existing Vite setup. In local development the API is available at
+`http://127.0.0.1:5000`; in production it should be served from the deployed
+backend host URL.
 
 ## Configuration
 

@@ -241,9 +241,8 @@ async function analyzeMessage() {
         );
 
         alert(
-            "Cannot connect to backend.\n\n" +
-            "Make sure Flask is running on:\n" +
-            "http://127.0.0.1:5000"
+            "Unable to connect to the Cyber Shield backend.\n\n" +
+            "Please verify the production API is running and reachable."
         );
 
     } finally {
