@@ -17,6 +17,17 @@
 
 <body>
 
+<div class="dashboard-overlay" aria-hidden="true">
+    <div class="overlay-grid"></div>
+    <div class="scan-rings">
+        <span class="ring ring-one"></span>
+        <span class="ring ring-two"></span>
+        <span class="ring ring-three"></span>
+    </div>
+    <div class="dashboard-glow glow-one"></div>
+    <div class="dashboard-glow glow-two"></div>
+    <div class="dashboard-glow glow-three"></div>
+</div>
 
 <!-- =====================================================
      NAVBAR
@@ -68,264 +79,192 @@
 
 <section class="hero">
 
-
-    <!-- HERO LEFT -->
-
     <div class="hero-left">
 
-
         <div class="tag">
-
             <span>●</span>
-
             AI-POWERED SECURITY
-
         </div>
 
-
-        <h1>
-
-            Detect Scams
-
-            <br>
-
-            <span>Before They</span>
-
-            <br>
-
-            Detect You.
-
+        <h1 class="cyber-title">
+            Stop scams
+            <span class="glow-word">before</span>
+            they reach you.
         </h1>
 
-
         <p>
-
-            Cyber Shield analyzes suspicious SMS messages,
-            emails, social media DMs and payment requests
-            to identify potential scams before you become
-            a victim.
-
+            Cyber Shield monitors suspicious SMS, emails, DMs and payment requests
+            in real time to spot scam patterns, risky links and manipulative tactics
+            before you act.
         </p>
 
-
         <div class="hero-buttons">
-
-            <a
-                href="analyzer.html"
-                class="primary-btn">
-
-                🔍 Analyze a Message
-
-            </a>
-
-
-            <a
-                href="features.html"
-                class="secondary-btn">
-
-                Explore Features →
-
-            </a>
-
+            <a href="analyzer.html" class="primary-btn">🔍 Analyze a Message</a>
+            <a href="features.html" class="secondary-btn">Explore Features →</a>
         </div>
-
-
-
-        <!-- TRUST STATS -->
 
         <div class="trust">
-
-
             <div>
-
-                <strong>
-                    99%
-                </strong>
-
-                <span>
-                    Pattern Detection
-                </span>
-
+                <strong>99%</strong>
+                <span>Pattern Detection</span>
             </div>
-
-
             <div>
-
-                <strong>
-                    24/7
-                </strong>
-
-                <span>
-                    Security Protection
-                </span>
-
+                <strong>24/7</strong>
+                <span>Protection</span>
             </div>
-
-
             <div>
-
-                <strong>
-                    100+
-                </strong>
-
-                <span>
-                    Scam Patterns
-                </span>
-
+                <strong>100+</strong>
+                <span>Scam Patterns</span>
             </div>
-
-
         </div>
-
 
     </div>
 
-
-
-    <!-- =================================================
-         HERO RIGHT - AI SCAN DASHBOARD
-    ================================================== -->
-
     <div class="hero-right">
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
 
-
-        <!-- FLOATING CARD -->
-
-        <div class="floating-card top-card">
-
-            🟢 AI Protection Active
-
-        </div>
-
-
-        <!-- MAIN SCAN CARD -->
+        <div class="floating-card top-card">🟢 AI Protection Active</div>
+        <div class="floating-card bottom-card">Threats Blocked: 12K+</div>
 
         <div class="scan-card">
-
-
             <div class="scan-header">
-
-                <span>
-                    CYBER SHIELD
-                </span>
-
-
+                <span>CYBER SHIELD</span>
                 <div>
-
                     <span class="status-dot"></span>
-
                     LIVE ANALYSIS
-
                 </div>
-
             </div>
-
-
-
-            <!-- MESSAGE -->
 
             <div class="message-card">
-
-
-                <div class="user-avatar">
-
-                    👤
-
-                </div>
-
-
+                <div class="user-avatar">👤</div>
                 <div class="message-content">
-
-                    <strong>
-                        Unknown Sender
-                    </strong>
-
-
+                    <strong>Unknown Sender</strong>
                     <p>
-
-                        Congratulations! You've won
-                        ₹50,000. Click this link immediately
+                        Congratulations! You have won ₹50,000. Click this link immediately
                         to claim your prize.
-
                     </p>
-
                 </div>
-
-
             </div>
-
-
 
             <div class="scan-line"></div>
 
-
-
-            <!-- THREAT -->
-
             <div class="danger-card">
-
-
-                <div class="danger-icon">
-
-                    ⚠️
-
-                </div>
-
-
+                <div class="danger-icon">⚠️</div>
                 <div>
-
-                    <strong>
-                        Potential Scam Detected
-                    </strong>
-
-                    <p>
-                        Multiple suspicious indicators found
-                    </p>
-
+                    <strong>Potential Scam Detected</strong>
+                    <p>Multiple suspicious indicators found</p>
                 </div>
-
-
-                <div class="danger-score">
-
-                    86%
-
-                </div>
-
-
+                <div class="danger-score">86%</div>
             </div>
-
-
-
-            <!-- DETECTED ITEMS -->
 
             <div class="detected-items">
-
-                <span>
-                    ⚠ Urgency
-                </span>
-
-                <span>
-                    🎁 Fake Prize
-                </span>
-
-                <span>
-                    🔗 Suspicious Link
-                </span>
-
-                <span>
-                    💳 Payment Request
-                </span>
-
+                <span>⚠ Urgency</span>
+                <span>🎁 Fake Prize</span>
+                <span>🔗 Suspicious Link</span>
+                <span>💳 Payment Request</span>
             </div>
-
-
         </div>
-
-
     </div>
 
-
 </section>
+
+<section class="feature-highlight-section" data-parallax="0.12">
+    <div class="feature-highlight-grid">
+        <article class="mini-feature glass-card">
+            <span class="mini-icon">⚡</span>
+            <div>
+                <h3>Instant Alerts</h3>
+                <p>Fast risk detection for messages that try to pressure or manipulate you.</p>
+            </div>
+        </article>
+
+        <article class="mini-feature glass-card">
+            <span class="mini-icon">🔗</span>
+            <div>
+                <h3>Link Review</h3>
+                <p>Identify suspicious URLs and unsafe redirects before they become a threat.</p>
+            </div>
+        </article>
+
+        <article class="mini-feature glass-card">
+            <span class="mini-icon">🛡️</span>
+            <div>
+                <h3>Safer Decisions</h3>
+                <p>Get clear, actionable guidance so you can verify before you trust.</p>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="intel-panel-section" data-parallax="0.18">
+    <div class="intel-shell">
+        <div class="hud-grid">
+            <div class="hud-panel main-panel">
+                <div class="panel-header">
+                    <span class="panel-label">THREAT INTELLIGENCE</span>
+                    <span class="live-pill"><span class="pulse-dot"></span> LIVE</span>
+                </div>
+
+                <div class="network-map">
+                    <span class="node node-a"></span>
+                    <span class="node node-b"></span>
+                    <span class="node node-c"></span>
+                    <span class="node node-d"></span>
+                    <span class="node node-e"></span>
+                    <span class="node node-f"></span>
+                    <div class="line line-1"></div>
+                    <div class="line line-2"></div>
+                    <div class="line line-3"></div>
+                    <div class="line line-4"></div>
+                    <div class="line line-5"></div>
+                </div>
+
+                <div class="readout-row">
+                    <div>
+                        <small>Threat Feed</small>
+                        <strong>2,846</strong>
+                    </div>
+                    <div>
+                        <small>Blocked</small>
+                        <strong>1,982</strong>
+                    </div>
+                    <div>
+                        <small>Risk Index</small>
+                        <strong>Low</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hud-panel side-panel">
+                <div class="panel-header small-header">
+                    <span class="panel-label">SECURITY GRID</span>
+                </div>
+
+                <div class="signal-list">
+                    <div class="signal-item">
+                        <span class="signal-name">Phishing</span>
+                        <div class="signal-bar"><i class="phishing"></i></div>
+                    </div>
+                    <div class="signal-item">
+                        <span class="signal-name">Impersonation</span>
+                        <div class="signal-bar"><i class="impersonation"></i></div>
+                    </div>
+                    <div class="signal-item">
+                        <span class="signal-name">Payment Fraud</span>
+                        <div class="signal-bar"><i class="payment-fraud"></i></div>
+                    </div>
+                    <div class="signal-item">
+                        <span class="signal-name">Fake Offers</span>
+                        <div class="signal-bar"><i class="fake-offers"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="particle-layer" aria-hidden="true"></div>
 
 
 
@@ -333,7 +272,7 @@
      SECURITY OVERVIEW
 ===================================================== -->
 
-<section class="home-security-section">
+<section class="home-security-section" data-parallax="0.2">
 
 
     <div class="section-title">
@@ -455,7 +394,7 @@
      DETECTION TYPES
 ===================================================== -->
 
-<section class="home-detection-section">
+<section class="home-detection-section" data-parallax="0.24">
 
 
     <div class="section-title">
@@ -611,7 +550,7 @@
      HOW IT WORKS
 ===================================================== -->
 
-<section class="home-how-section">
+<section class="home-how-section" data-parallax="0.28">
 
 
     <div class="section-title">
